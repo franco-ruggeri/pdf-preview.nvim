@@ -7,6 +7,7 @@ reloading on file changes. Ideal for remote workflows, live editing, and fast
 iteration.
 
 <!-- TODO: add demo -->
+<!-- TODO: add help page -->
 
 ## ✨ Features
 
