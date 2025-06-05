@@ -8,8 +8,6 @@ iteration.
 
 <!-- TODO: add demo -->
 
----
-
 ## ✨ Features
 
 - 🔄 **Auto-reloading**: Refreshes the browser when your PDF file changes.
@@ -19,14 +17,10 @@ iteration.
 directory.
 - ⚙️ **Minimal config**: Simple `setup()` with sensible defaults.
 
----
-
 ## ⚡ Requirements
 
 - **Neovim** ≥ 0.8  
 - **Node.js** (for `npm` / `npx`)
-
----
 
 ## 📦 Installation
 
