@@ -1,4 +1,3 @@
--- TODO: test again that the process stops when existing nvim, I removed the handler, but it should still work
 local M = {}
 
 local data_path = vim.fn.stdpath("data") .. "/pdf-preview"
@@ -56,21 +55,18 @@ M.start_preview = function()
 	local root_dir = lsp_clients[1].root_dir
 
 	-- Start browser-sync server
-	-- TODO: need to store index.html somewhere in the data dir, but pointing to the pdf file
-	local server_path = root_dir .. "/" .. M.opts.build_dir
-	vim.fn.mkdir(server_path, "p")
 	server_process = vim.fn.jobstart({
 		"npx",
 		"browser-sync",
 		"start",
 		"--server",
-		server_path,
+		root_dir,
 		"--files",
 		M.opts.pdf_file,
 		"--port",
-		string(M.opts.port),
+		tostring(M.opts.port),
 		"--reload-debounce",
-		string(M.opts.reload_debouce),
+		tostring(M.opts.reload_debouce),
 		"--watch",
 		"--no-ui",
 		"--no-open",
@@ -92,8 +88,10 @@ M.start_preview = function()
 	})
 
 	-- Create HTML page wrapping the PDF
-	local html_file = M.opts.build_dir .. "/index.html"
-	if not vim.uv.fs_stat(html_file) then
+	-- TODO: need to store index.html somewhere in the data dir, but pointing to the pdf file
+	-- local html_file = M.opts.build_dir .. "/index.html"
+	local html_filepath = root_dir .. "/index.html"
+	if not vim.uv.fs_stat(html_filepath) then
 		local html_content = string.format(
 			[[
 <!DOCTYPE html>
@@ -113,9 +111,9 @@ M.start_preview = function()
 ]],
 			M.opts.pdf_file
 		)
-		local file = io.open(html_file, "w")
+		local file = io.open(html_filepath, "w")
 		if not file then
-			error("Could not open file for writing: " .. html_file)
+			error("Could not open file for writing: " .. html_filepath)
 		end
 		file:write(html_content)
 		file:close()
