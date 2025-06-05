@@ -57,10 +57,10 @@ The default configuration is as follows:
 
 ```lua
 {
-  pdf_file = "main.pdf",     -- PDF to preview
-  port = 5000,               -- Starting port
-  reload_debouce = 500,      -- Debounce delay in milliseconds
-  build_dir = "build",       -- Folder to serve
+    pdf_file = "main.pdf",     -- PDF to preview
+    port = 5000,               -- Starting port
+    reload_debouce = 500,      -- Debounce delay in milliseconds
+    build_dir = "build",       -- Folder to serve
 }
 ```
 
@@ -87,13 +87,13 @@ For instance, you can:
 
     ```lua
   vim.lsp.config("texlab", {
-   settings = {
-    texlab = {
-     build = {
-      onSave = true,
-     },
-    },
-   },
+      settings = {
+          texlab = {
+              build = {
+                  onSave = true,
+              },
+          },
+      },
   })
   ```
 
