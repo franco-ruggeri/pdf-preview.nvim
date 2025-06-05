@@ -15,7 +15,6 @@ iteration.
 - 🔌 **Remote-friendly**: Works over SSH with port forwarding.
 - 🧠 **LSP-aware**: Automatically detects project root from your LSP client.
 - 🪞 **Transparent**: Install `browser-sync` automatically.
-directory.
 - ⚙️ **Minimal config**: Simple `setup()` with sensible defaults.
 
 ## ⚡ Requirements
