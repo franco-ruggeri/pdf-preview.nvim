@@ -145,8 +145,8 @@ M.setup = function(opts)
 
 	install_browser_sync()
 
-	vim.api.nvim_create_user_command("LatexPreviewStart", M.start_preview, {})
-	vim.api.nvim_create_user_command("LatexPreviewStop", M.stop_preview, {})
+	vim.api.nvim_create_user_command("PdfPreviewStart", M.start_preview, {})
+	vim.api.nvim_create_user_command("PdfPreviewStop", M.stop_preview, {})
 end
 
 return M
