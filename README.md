@@ -1,4 +1,4 @@
-# pdf-preview.nvim 🖹🔄  
+# pdf-preview.nvim 🧾🔍
 
 **Live PDF preview for Neovim using browser-sync.**
 
