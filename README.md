@@ -6,6 +6,8 @@ Easily preview LaTeX-compiled PDF documents in your browser, with automatic
 reloading on file changes. Ideal for remote workflows, live editing, and fast
 iteration.
 
+<!-- TODO: add demo -->
+
 ---
 
 ## ✨ Features
