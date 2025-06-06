@@ -95,7 +95,6 @@ M.start_preview = function()
 	html_file:close()
 
 	-- Start browser-sync server
-	print(server_path)
 	server_process = vim.fn.jobstart({
 		"npx",
 		"browser-sync",
