@@ -1,5 +1,7 @@
 # PDF Preview 🧾🔍
 
+## Overview
+
 Live PDF preview for Neovim using browser-sync.
 
 Easily preview PDF documents in your browser, with automatic reloading on file
@@ -22,7 +24,7 @@ remotely over SSH.
 
 ## 📦 Installation
 
-Using [lazy.nvim](https://github.com/folke/lazy.nvim):
+Using [lazy.nvim](https://github.com/folke/lazy.nvim) :
 
 ```lua
 { 
@@ -42,8 +44,8 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 The following user commands are created:
 
-- `:PdfPreviewStart`: Start the live preview server.
-- `:PdfPreviewStop`: Stop the preview server.
+- `:PdfPreviewStart` : Start the live preview server.
+- `:PdfPreviewStop` : Stop the preview server.
 
 After using `:PdfPreviewStart`, open the printed URL (e.g.,
 <http://localhost:5000>) in your browser.
@@ -74,8 +76,7 @@ document.
 
 For instance, you can:
 
-- Install the `texlab` LSP server using
-[`mason.nvim`](https://github.com/mason-org/mason.nvim).
+- Install the `texlab` LSP server using `mason.nvim`.
 - Configure `texlab` to compile on save.
 
     ```lua
