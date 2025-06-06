@@ -17,7 +17,9 @@ jobs:
       - name: "Convert README to help page"
         uses: "kdheepak/panvimdoc@v4.0.1"
         with:
-          vimdoc: "${{ github.event.repository.name }}"
+          vimdoc: "pdf-preview"
+          demojify: true
+          shiftheadinglevelby: 1
       - name: "Commit help page"
         uses: "stefanzweifel/git-auto-commit-action@v5"
         with:
