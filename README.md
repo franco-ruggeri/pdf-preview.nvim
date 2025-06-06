@@ -2,11 +2,9 @@
 
 ## Overview
 
-Live preview of PDF documents using browser-sync.
-
-Easily preview PDF documents in your browser, with automatic reloading on file
-changes. This plugin is ideal for a minimalistic LaTeX writing workflow, even
-remotely over SSH.
+A Neovim plugin for easily previewing PDF documents in your browser, with
+automatic reloading on file changes. This plugin is ideal for a minimalist LaTeX
+editing workflow, even remotely over SSH.
 
 <!-- TODO: add demo -->
 
@@ -15,8 +13,8 @@ remotely over SSH.
 - 🔄 Auto-reloading: Refreshes the browser when your PDF file changes.
 - 🔌 Remote-friendly: Works over SSH with port forwarding.
 - 🧠 LSP-aware: Automatically detects project root from your LSP client.
-- 🪞 Transparent: Install `browser-sync` automatically.
 - ⚙️ Minimal config: Simple `setup()` with sensible defaults.
+- 🪞 Transparent: No side effects in your project.
 
 ## ⚡ Requirements
 
