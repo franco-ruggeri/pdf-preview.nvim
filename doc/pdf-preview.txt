@@ -11,7 +11,8 @@ Table of Contents                              *pdf-preview-table-of-contents*
 6. Configuration                                   |pdf-preview-configuration|
 7. Workflow Tips                                   |pdf-preview-workflow-tips|
   - LaTeX                                    |pdf-preview-workflow-tips-latex|
-  - Remote                                  |pdf-preview-workflow-tips-remote|
+  - Remote server                    |pdf-preview-workflow-tips-remote-server|
+  - Dev container                    |pdf-preview-workflow-tips-dev-container|
 8. Contributing                                     |pdf-preview-contributing|
 9. Links                                                   |pdf-preview-links|
 
@@ -20,7 +21,7 @@ Table of Contents                              *pdf-preview-table-of-contents*
 
 ANeovim plugin for easily previewing PDF documents in your browser, with
 automatic reloading on file changes. This plugin is ideal for a minimalist
-LaTeX editing workflow, even remotely over SSH.
+LaTeX editing workflow, even on a remote server or in a dev container.
 
 
 ==============================================================================
@@ -119,13 +120,19 @@ The `texlab` LSP server will take care of compiling on save, and `pdf-preview`
 will watch for changes in the output PDF document.
 
 
-REMOTE                                      *pdf-preview-workflow-tips-remote*
+REMOTE SERVER                        *pdf-preview-workflow-tips-remote-server*
 
 You can use SSH port forwarding to view the PDF remotely:
 
 >bash
     ssh -L 5000:localhost:5000 user@remote
 <
+
+
+DEV CONTAINER                        *pdf-preview-workflow-tips-dev-container*
+
+You can use port forwarding by setting the `forwardPorts` property. See the
+official documentation <https://containers.dev/implementors/json_reference/>
 
 
 ==============================================================================
