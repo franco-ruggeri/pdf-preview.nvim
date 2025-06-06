@@ -2,6 +2,8 @@
 
 ## Overview
 
+Live preview of PDF documents using browser-sync.
+
 Easily preview PDF documents in your browser, with automatic reloading on file
 changes. This plugin is ideal for a minimalistic LaTeX writing workflow, even
 remotely over SSH.
