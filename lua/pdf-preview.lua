@@ -54,13 +54,44 @@ M.start_preview = function()
 	end
 	local root_dir = lsp_clients[1].root_dir
 
+	-- Create HTML page wrapping the PDF
+	local server_path = vim.fn.tempname()
+	vim.fn.mkdir(server_path, "p")
+	local html_filepath = server_path .. "/index.html"
+	local html_content = string.format(
+		[[
+	<!DOCTYPE html>
+	<html>
+	<head>
+	  <meta charset="UTF-8">
+	  <title>PDF Preview</title>
+	  <style>
+	    html, body { margin: 0; height: 100%%; overflow: hidden; }
+	    iframe { width: 100%%; height: 100%%; border: none; }
+	  </style>
+	</head>
+	<body>
+	  <iframe src="%s"></iframe>
+	</body>
+	</html>
+	]],
+		M.opts.pdf_file
+	)
+	local html_file = io.open(html_filepath, "w")
+	if not html_file then
+		error("Could not open file for writing: " .. html_filepath)
+	end
+	html_file:write(html_content)
+	html_file:close()
+
 	-- Start browser-sync server
+	print(server_path)
 	server_process = vim.fn.jobstart({
 		"npx",
 		"browser-sync",
 		"start",
 		"--server",
-		root_dir,
+		server_path,
 		"--files",
 		M.opts.pdf_file,
 		"--port",
@@ -86,38 +117,6 @@ M.start_preview = function()
 			end
 		end,
 	})
-
-	-- Create HTML page wrapping the PDF
-	-- TODO: need to store index.html somewhere in the data dir, but pointing to the pdf file
-	-- local html_file = M.opts.build_dir .. "/index.html"
-	local html_filepath = root_dir .. "/index.html"
-	if not vim.uv.fs_stat(html_filepath) then
-		local html_content = string.format(
-			[[
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>PDF Preview</title>
-  <style>
-    html, body { margin: 0; height: 100%%; overflow: hidden; }
-    iframe { width: 100%%; height: 100%%; border: none; }
-  </style>
-</head>
-<body>
-  <iframe src="%s"></iframe>
-</body>
-</html>
-]],
-			M.opts.pdf_file
-		)
-		local file = io.open(html_filepath, "w")
-		if not file then
-			error("Could not open file for writing: " .. html_filepath)
-		end
-		file:write(html_content)
-		file:close()
-	end
 
 	M.running = true
 	vim.notify("LaTeX preview server")
