@@ -4,7 +4,7 @@
 
 A Neovim plugin for easily previewing PDF documents in your browser, with
 automatic reloading on file changes. This plugin is ideal for a minimalist LaTeX
-editing workflow, even remotely over SSH.
+editing workflow, even on a remote server or in a dev container.
 
 ![demo](./assets/demo.gif)
 
@@ -92,13 +92,18 @@ For instance, you can:
 The `texlab` LSP server will take care of compiling on save, and `pdf-preview`
 will watch for changes in the output PDF document.
 
-### Remote
+### Remote server
 
 You can use SSH port forwarding to view the PDF remotely:
 
 ```bash
 ssh -L 5000:localhost:5000 user@remote
 ```
+
+### Dev container
+
+You can use port forwarding by setting the `forwardPorts` property. See
+the [official documentation](https://containers.dev/implementors/json_reference/)
 
 ## Contributing
 
