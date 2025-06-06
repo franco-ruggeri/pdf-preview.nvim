@@ -3,7 +3,7 @@ local M = {}
 local data_path = vim.fn.stdpath("data") .. "/pdf-preview"
 
 M.opts = {
-	pdf_file = "main.pdf",
+	pdf_filepath = "main.pdf",
 	port = 5000,
 	reload_debouce = 500,
 }
@@ -47,6 +47,10 @@ M.start_preview = function()
 		return
 	end
 
+	-- Create the temporary directory to serve
+	local server_path = vim.fn.tempname()
+	vim.fn.mkdir(server_path, "p")
+
 	-- Get root directory from LSP client
 	local lsp_clients = vim.lsp.get_clients()
 	if #lsp_clients == 0 then
@@ -54,9 +58,13 @@ M.start_preview = function()
 	end
 	local root_dir = lsp_clients[1].root_dir
 
+	-- Symlink the PDF file to the server directory
+	local pdf_filepath = server_path .. "/" .. "main.pdf"
+	if not vim.uv.fs_symlink(root_dir .. "/" .. M.opts.pdf_filepath, pdf_filepath, nil) then
+		error("Failed to symlink PDF file: " .. pdf_filepath)
+	end
+
 	-- Create HTML page wrapping the PDF
-	local server_path = vim.fn.tempname()
-	vim.fn.mkdir(server_path, "p")
 	local html_filepath = server_path .. "/index.html"
 	local html_content = string.format(
 		[[
@@ -75,7 +83,7 @@ M.start_preview = function()
 	</body>
 	</html>
 	]],
-		root_dir .. "/" .. M.opts.pdf_file
+		pdf_filepath
 	)
 	local html_file = io.open(html_filepath, "w")
 	if not html_file then
@@ -92,8 +100,6 @@ M.start_preview = function()
 		"start",
 		"--server",
 		server_path,
-		"--files",
-		M.opts.pdf_file,
 		"--port",
 		tostring(M.opts.port),
 		"--reload-debounce",
