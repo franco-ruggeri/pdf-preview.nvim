@@ -5,7 +5,7 @@ on:
       - "main"
     paths:
       - "README.md"
-      - ".github/workflows/panvimdoc.yaml"
+      - ".github/workflows/generate-help-page.yaml"
 jobs:
   docs:
     runs-on: "ubuntu-latest"
