@@ -2,7 +2,14 @@
   "image": "ubuntu:24.04",
   "remoteUser": "ubuntu",
   "features": {
-    "ghcr.io/franco-ruggeri/devcontainer-features/tree-sitter-cli": {},
-    "ghcr.io/duduribeiro/devcontainer-features/neovim": {}
+    "ghcr.io/devcontainers/features/common-utils": {
+      "username": "ubuntu",
+      "installZsh": false,
+      "installOhMyZsh": false,
+      "installOhMyZshConfig": false
+    },
+    "ghcr.io/duduribeiro/devcontainer-features/neovim": {},
+    "ghcr.io/devcontainers/features/node": {},
+    "ghcr.io/franco-ruggeri/devcontainer-features/tree-sitter-cli": {}
   }
 }
