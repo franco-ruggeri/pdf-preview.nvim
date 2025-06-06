@@ -4,10 +4,10 @@ on:
     tags:
       - "*"
 jobs:
-  luarocks-upload:
+  deploy:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v4"
       - name: "Release"
-        uses: softprops/action-gh-release@v2
+        uses: "softprops/action-gh-release@v2"
