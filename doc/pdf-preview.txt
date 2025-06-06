@@ -12,7 +12,7 @@ Table of Contents                              *pdf-preview-table-of-contents*
   - LaTeX                                    |pdf-preview-workflow-tips-latex|
   - Remote                                  |pdf-preview-workflow-tips-remote|
 7. Contributing                                     |pdf-preview-contributing|
-**LivePDF preview for Neovim using browser-sync.**
+LivePDF preview for Neovim using browser-sync.
 
 Easily preview PDF documents in your browser, with automatic reloading on file
 changes. This plugin is ideal for a minimalistic LaTeX writing workflow, even
@@ -22,17 +22,17 @@ remotely over SSH.
 ==============================================================================
 1. Features                                             *pdf-preview-features*
 
-- **Auto-reloading**Refreshes the browser when your PDF file changes.
-- **Remote-friendly**Works over SSH with port forwarding.
-- **LSP-aware**Automatically detects project root from your LSP client.
-- **Transparent**Install `browser-sync` automatically.
-- **Minimal config**Simple `setup()` with sensible defaults.
+- Auto-reloading: Refreshes the browser when your PDF file changes.
+- Remote-friendly: Works over SSH with port forwarding.
+- LSP-aware: Automatically detects project root from your LSP client.
+- Transparent: Install `browser-sync` automatically.
+- Minimal config: Simple `setup()` with sensible defaults.
 
 
 ==============================================================================
 2. Requirements                                     *pdf-preview-requirements*
 
-- **Node.js** (for `npm` and `npx`)
+- Node.js (for `npm` and `npx`)
 
 
 ==============================================================================
