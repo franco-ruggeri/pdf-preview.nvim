@@ -9,6 +9,7 @@ M.opts = {
 }
 
 local server_process = nil
+local server_pdf_filename = "main.pdf"
 
 local function install_browser_sync()
 	local result = nil
@@ -59,9 +60,10 @@ M.start_preview = function()
 	local root_dir = lsp_clients[1].root_dir
 
 	-- Symlink the PDF file to the server directory
-	local pdf_filepath = server_path .. "/" .. "main.pdf"
-	if not vim.uv.fs_symlink(root_dir .. "/" .. M.opts.pdf_filepath, pdf_filepath, nil) then
-		error("Failed to symlink PDF file: " .. pdf_filepath)
+	local pdf_filepath = root_dir .. "/" .. M.opts.pdf_filepath
+	local server_pdf_filepath = server_path .. "/" .. server_pdf_filename
+	if not vim.uv.fs_symlink(pdf_filepath, server_pdf_filepath, nil) then
+		error("Failed to symlink PDF file: " .. server_pdf_filepath)
 	end
 
 	-- Create HTML page wrapping the PDF
@@ -83,7 +85,7 @@ M.start_preview = function()
 	</body>
 	</html>
 	]],
-		pdf_filepath
+		server_pdf_filename
 	)
 	local html_file = io.open(html_filepath, "w")
 	if not html_file then
