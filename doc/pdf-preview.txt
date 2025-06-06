@@ -3,18 +3,24 @@
 ==============================================================================
 Table of Contents                              *pdf-preview-table-of-contents*
 
-  - pdf-preview.nvim                           |pdf-preview-pdf-preview.nvim-|
-
-PDF-PREVIEW.NVIM                               *pdf-preview-pdf-preview.nvim-*
-
+1. Features                                             |pdf-preview-features|
+2. Requirements                                     |pdf-preview-requirements|
+3. Installation                                     |pdf-preview-installation|
+4. Usage                                                   |pdf-preview-usage|
+5. Configuration                                   |pdf-preview-configuration|
+6. Workflow Tips                                   |pdf-preview-workflow-tips|
+  - LaTeX                                    |pdf-preview-workflow-tips-latex|
+  - Remote                                  |pdf-preview-workflow-tips-remote|
+7. Contributing                                     |pdf-preview-contributing|
 **LivePDF preview for Neovim using browser-sync.**
 
-Easily preview LaTeX-compiled PDF documents in your browser, with automatic
-reloading on file changes. Ideal for remote workflows, live editing, and fast
-iteration.
+Easily preview PDF documents in your browser, with automatic reloading on file
+changes. This plugin is ideal for a minimalistic LaTeX writing workflow, even
+remotely over SSH.
 
 
-FEATURES ~
+==============================================================================
+1. Features                                             *pdf-preview-features*
 
 - **Auto-reloading**Refreshes the browser when your PDF file changes.
 - **Remote-friendly**Works over SSH with port forwarding.
@@ -23,12 +29,14 @@ FEATURES ~
 - **Minimal config**Simple `setup()` with sensible defaults.
 
 
-REQUIREMENTS ~
+==============================================================================
+2. Requirements                                     *pdf-preview-requirements*
 
 - **Node.js** (for `npm` and `npx`)
 
 
-INSTALLATION ~
+==============================================================================
+3. Installation                                     *pdf-preview-installation*
 
 Using lazy.nvim <https://github.com/folke/lazy.nvim>
 
@@ -47,7 +55,8 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim>
 <
 
 
-USAGE ~
+==============================================================================
+4. Usage                                                   *pdf-preview-usage*
 
 Thefollowing user commands are created:
 
@@ -58,7 +67,8 @@ After using `:PdfPreviewStart`, open the printed URL (e.g.,
 <http://localhost:5000>) in your browser.
 
 
-CONFIGURATION ~
+==============================================================================
+5. Configuration                                   *pdf-preview-configuration*
 
 The default configuration is as follows:
 
@@ -76,10 +86,11 @@ The default configuration is as follows:
 <
 
 
-WORKFLOW TIPS ~
+==============================================================================
+6. Workflow Tips                                   *pdf-preview-workflow-tips*
 
 
-LATEX
+LATEX                                        *pdf-preview-workflow-tips-latex*
 
 This plugin works nicely with LaTeX. Just compile the LaTeX project into a PDF
 document.
@@ -105,7 +116,7 @@ The `texlab` LSP server will take care of compiling on save, and `pdf-preview`
 will watch for changes in the output PDF document.
 
 
-REMOTE
+REMOTE                                      *pdf-preview-workflow-tips-remote*
 
 You can use SSH port forwarding to view the PDF remotely:
 
@@ -114,7 +125,8 @@ You can use SSH port forwarding to view the PDF remotely:
 <
 
 
-CONTRIBUTING ~
+==============================================================================
+7. Contributing                                     *pdf-preview-contributing*
 
 All contributions are welcome! Open an issue to discuss ideas and open a pull
 request once agreed.
