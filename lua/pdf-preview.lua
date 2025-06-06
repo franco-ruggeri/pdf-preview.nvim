@@ -75,7 +75,7 @@ M.start_preview = function()
 	</body>
 	</html>
 	]],
-		M.opts.pdf_file
+		root_dir .. "/" .. M.opts.pdf_file
 	)
 	local html_file = io.open(html_filepath, "w")
 	if not html_file then
