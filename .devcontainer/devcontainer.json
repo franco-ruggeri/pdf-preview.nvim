@@ -1,0 +1,8 @@
+{
+  "image": "ubuntu:24.04",
+  "remoteUser": "ubuntu",
+  "features": {
+    "ghcr.io/franco-ruggeri/devcontainer-features/tree-sitter-cli": {},
+    "ghcr.io/duduribeiro/devcontainer-features/neovim": {}
+  }
+}
