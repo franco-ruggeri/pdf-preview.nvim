@@ -15,7 +15,7 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v4"
       - name: "Convert README to help page"
-        uses: "kdheepak/panvimdoc@main"
+        uses: "kdheepak/panvimdoc@v4"
         with:
           vimdoc: "${{ github.event.repository.name }}"
       - name: "Commit help page"
