@@ -2,24 +2,23 @@ name: "Generate help page"
 on:
   push:
     branches:
-      - main
+      - "main"
     paths:
-      - README.md
-      - .github/workflows/panvimdoc.yaml
+      - "README.md"
+      - ".github/workflows/panvimdoc.yaml"
 jobs:
   docs:
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     permissions:
-      contents: write
+      contents: "write"
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v4"
       - name: "Convert README to help page"
         uses: "kdheepak/panvimdoc@main"
         with:
-          vimdoc: ${{ github.event.repository.name }}
+          vimdoc: "${{ github.event.repository.name }}"
       - name: "Commit help page"
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: "stefanzweifel/git-auto-commit-action@v5"
         with:
           commit_message: "docs: update help pages"
-          branch: ${{ github.head_ref }}
