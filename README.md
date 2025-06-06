@@ -19,8 +19,7 @@ iteration.
 
 ## ⚡ Requirements
 
-- **Neovim** ≥ 0.8  
-- **Node.js** (for `npm` / `npx`)
+- **Node.js** (for `npm` and `npx`)
 
 ## 📦 Installation
 
@@ -56,22 +55,18 @@ The default configuration is as follows:
 
 ```lua
 {
-    pdf_file = "main.pdf",     -- PDF to preview
-    port = 5000,               -- Starting port
-    reload_debouce = 500,      -- Debounce delay in milliseconds
-    build_dir = "build",       -- Folder to serve
+    -- PDF filepath relative to the project root directory
+    pdf_filepath = "main.pdf",
+    -- Port where the browser-sync server listen on. 
+    -- If already in use, the port will be incremented until an available port 
+    -- is found.
+    port = 5000,
+    -- Debounce delay for refresh events in milliseconds
+    reload_debouce = 500,
 }
 ```
 
 ## Workflow Tips
-
-### Remote
-
-You can use SSH port forwarding to view the PDF remotely:
-
-```bash
-ssh -L 5000:localhost:5000 user@remote
-```
 
 ### LaTeX
 
@@ -98,6 +93,14 @@ For instance, you can:
 
 The `texlab` LSP server will take care of compiling on save, and `pdf-preview`
 will watch for changes in the output PDF document.
+
+### Remote
+
+You can use SSH port forwarding to view the PDF remotely:
+
+```bash
+ssh -L 5000:localhost:5000 user@remote
+```
 
 ## Contributing
 
