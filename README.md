@@ -2,9 +2,9 @@
 
 **Live PDF preview for Neovim using browser-sync.**
 
-Easily preview LaTeX-compiled PDF documents in your browser, with automatic
-reloading on file changes. Ideal for remote workflows, live editing, and fast
-iteration.
+Easily preview PDF documents in your browser, with automatic reloading on file
+changes. This plugin is ideal for a minimalistic LaTeX writing workflow, even
+remotely over SSH.
 
 <!-- TODO: add demo -->
 <!-- TODO: add help page -->
