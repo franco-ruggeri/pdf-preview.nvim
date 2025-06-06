@@ -3,15 +3,20 @@
 ==============================================================================
 Table of Contents                              *pdf-preview-table-of-contents*
 
-1. Features                                             |pdf-preview-features|
-2. Requirements                                     |pdf-preview-requirements|
-3. Installation                                     |pdf-preview-installation|
-4. Usage                                                   |pdf-preview-usage|
-5. Configuration                                   |pdf-preview-configuration|
-6. Workflow Tips                                   |pdf-preview-workflow-tips|
+1. Overview                                             |pdf-preview-overview|
+2. Features                                             |pdf-preview-features|
+3. Requirements                                     |pdf-preview-requirements|
+4. Installation                                     |pdf-preview-installation|
+5. Usage                                                   |pdf-preview-usage|
+6. Configuration                                   |pdf-preview-configuration|
+7. Workflow Tips                                   |pdf-preview-workflow-tips|
   - LaTeX                                    |pdf-preview-workflow-tips-latex|
   - Remote                                  |pdf-preview-workflow-tips-remote|
-7. Contributing                                     |pdf-preview-contributing|
+8. Contributing                                     |pdf-preview-contributing|
+
+==============================================================================
+1. Overview                                             *pdf-preview-overview*
+
 LivePDF preview for Neovim using browser-sync.
 
 Easily preview PDF documents in your browser, with automatic reloading on file
@@ -20,7 +25,7 @@ remotely over SSH.
 
 
 ==============================================================================
-1. Features                                             *pdf-preview-features*
+2. Features                                             *pdf-preview-features*
 
 - Auto-reloading: Refreshes the browser when your PDF file changes.
 - Remote-friendly: Works over SSH with port forwarding.
@@ -30,13 +35,13 @@ remotely over SSH.
 
 
 ==============================================================================
-2. Requirements                                     *pdf-preview-requirements*
+3. Requirements                                     *pdf-preview-requirements*
 
 - Node.js (for `npm` and `npx`)
 
 
 ==============================================================================
-3. Installation                                     *pdf-preview-installation*
+4. Installation                                     *pdf-preview-installation*
 
 Using lazy.nvim <https://github.com/folke/lazy.nvim>
 
@@ -56,19 +61,19 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim>
 
 
 ==============================================================================
-4. Usage                                                   *pdf-preview-usage*
+5. Usage                                                   *pdf-preview-usage*
 
 Thefollowing user commands are created:
 
-- `:PdfPreviewStart`Start the live preview server.
-- `:PdfPreviewStop`Stop the preview server.
+- `:PdfPreviewStart` Start the live preview server.
+- `:PdfPreviewStop` Stop the preview server.
 
 After using `:PdfPreviewStart`, open the printed URL (e.g.,
 <http://localhost:5000>) in your browser.
 
 
 ==============================================================================
-5. Configuration                                   *pdf-preview-configuration*
+6. Configuration                                   *pdf-preview-configuration*
 
 The default configuration is as follows:
 
@@ -87,7 +92,7 @@ The default configuration is as follows:
 
 
 ==============================================================================
-6. Workflow Tips                                   *pdf-preview-workflow-tips*
+7. Workflow Tips                                   *pdf-preview-workflow-tips*
 
 
 LATEX                                        *pdf-preview-workflow-tips-latex*
@@ -97,8 +102,7 @@ document.
 
 For instance, you can:
 
-- Install the `texlab` LSP server using `mason.nvim`
-    <https://github.com/mason-org/mason.nvim>.
+- Install the `texlab` LSP server using `mason.nvim`.
 - Configure `texlab` to compile on save.
     >lua
         vim.lsp.config("texlab", {
@@ -126,7 +130,7 @@ You can use SSH port forwarding to view the PDF remotely:
 
 
 ==============================================================================
-7. Contributing                                     *pdf-preview-contributing*
+8. Contributing                                     *pdf-preview-contributing*
 
 All contributions are welcome! Open an issue to discuss ideas and open a pull
 request once agreed.
