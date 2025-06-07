@@ -1,4 +1,4 @@
-*pdf-preview.txt*           For NVIM v0.8.0          Last change: 2025 June 06
+*pdf-preview.txt*           For NVIM v0.8.0          Last change: 2025 June 07
 
 ==============================================================================
 Table of Contents                              *pdf-preview-table-of-contents*
@@ -19,7 +19,7 @@ Table of Contents                              *pdf-preview-table-of-contents*
 ==============================================================================
 1. Overview                                             *pdf-preview-overview*
 
-ANeovim plugin for easily previewing PDF documents in your browser, with
+A Neovim plugin for easily previewing PDF documents in your browser, with
 automatic reloading on file changes. This plugin is ideal for a minimalist
 LaTeX editing workflow, even on a remote server or in a dev container.
 
@@ -63,7 +63,7 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim>
 ==============================================================================
 5. Usage                                                   *pdf-preview-usage*
 
-Thefollowing user commands are created:
+The following user commands are created:
 
 - `:PdfPreviewStart` Start the live preview server.
 - `:PdfPreviewStop` Stop the preview server.
