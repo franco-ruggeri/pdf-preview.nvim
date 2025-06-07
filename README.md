@@ -1,6 +1,6 @@
 # PDF Preview 🧾🔍
 
-## Overview
+## 📚 Overview
 
 A Neovim plugin for easily previewing PDF documents in your browser, with
 automatic reloading on file changes. This plugin is ideal for a minimalist LaTeX
@@ -38,7 +38,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) :
 }
 ```
 
-## Usage
+## 🚀 Usage
 
 The following user commands are created:
 
@@ -48,7 +48,7 @@ The following user commands are created:
 After using `:PdfPreviewStart`, open the printed URL (e.g.,
 <http://localhost:5000>) in your browser.
 
-## Configuration
+## 🛠️ Configuration
 
 The default configuration is as follows:
 
@@ -65,9 +65,9 @@ The default configuration is as follows:
 }
 ```
 
-## Workflow Tips
+## 💡 Workflow Tips
 
-### LaTeX
+### 🧪 LaTeX
 
 This plugin works nicely with LaTeX. Just compile the LaTeX project into a PDF
 document.
@@ -92,7 +92,7 @@ For instance, you can:
 The `texlab` LSP server will take care of compiling on save, and `pdf-preview`
 will watch for changes in the output PDF document.
 
-### Remote server
+### 🌐 Remote server
 
 You can use SSH port forwarding to view the PDF remotely:
 
@@ -100,12 +100,12 @@ You can use SSH port forwarding to view the PDF remotely:
 ssh -L 5000:localhost:5000 user@remote
 ```
 
-### Dev container
+### 🐳 Dev container
 
 You can use port forwarding by setting the `forwardPorts` property. See
 the [official documentation](https://containers.dev/implementors/json_reference/)
 
-## Contributing
+## 🤝 Contributing
 
 All contributions are welcome! Open an issue to discuss ideas and open a pull
 request once agreed.
