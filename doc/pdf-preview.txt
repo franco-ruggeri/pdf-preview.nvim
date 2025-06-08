@@ -1,4 +1,4 @@
-*pdf-preview.txt*           For NVIM v0.8.0          Last change: 2025 June 07
+*pdf-preview.txt*           For NVIM v0.8.0          Last change: 2025 June 08
 
 ==============================================================================
 Table of Contents                              *pdf-preview-table-of-contents*
@@ -132,7 +132,7 @@ You can use SSH port forwarding to view the PDF remotely:
 DEV CONTAINER                        *pdf-preview-workflow-tips-dev-container*
 
 You can use port forwarding by setting the `forwardPorts` property. See the
-official documentation <https://containers.dev/implementors/json_reference/>
+official documentation <https://containers.dev/implementors/json_reference/>.
 
 
 ==============================================================================
