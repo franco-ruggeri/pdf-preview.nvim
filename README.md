@@ -102,8 +102,8 @@ ssh -L 5000:localhost:5000 user@remote
 
 ### 🐳 Dev container
 
-You can use port forwarding by setting the `forwardPorts` property. See
-the [official documentation](https://containers.dev/implementors/json_reference/)
+You can use port forwarding by setting the `forwardPorts` property. See the
+[official documentation](https://containers.dev/implementors/json_reference/).
 
 ## 🤝 Contributing
 
