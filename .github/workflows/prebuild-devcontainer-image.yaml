@@ -1,4 +1,4 @@
-name: "Prebuild dev containers"
+name: "Prebuild dev container image"
 on:
   push:
     branches:
@@ -28,7 +28,7 @@ jobs:
           rm -f devpod
           devpod provider add docker
           devpod provider use docker
-      - name: "Prebuild dev container"
+      - name: "Prebuild dev container image"
         run: |
           echo "Prebuilding image for $dir..."
           devpod build . --repository "ghcr.io/${{ github.repository }}/devcontainer"
