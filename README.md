@@ -12,9 +12,8 @@ editing workflow, even on a remote server or in a dev container.
 
 - 🔄 Auto-reloading: Refreshes the browser when your PDF file changes.
 - 🔌 Remote-friendly: Works over SSH with port forwarding.
-- 🧠 LSP-aware: Automatically detects project root from your LSP client.
-- ⚙️ Minimal config: Simple `setup()` with sensible defaults.
 - 🪞 Transparent: No side effects in your project.
+- ⚙️ Minimal config: Simple `setup()` with sensible defaults.
 
 ## ⚡ Requirements
 
