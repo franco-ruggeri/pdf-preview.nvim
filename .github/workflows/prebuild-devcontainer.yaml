@@ -31,4 +31,4 @@ jobs:
       - name: "Prebuild dev container"
         run: |
           echo "Prebuilding image for $dir..."
-          devpod build . --repository "ghcr.io/franco-ruggeri/${{ github.event.repository.name }}/devcontainer"
+          devpod build . --repository "ghcr.io/${{ github.repository }}/devcontainer"

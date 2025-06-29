@@ -13,5 +13,10 @@
     "ghcr.io/duduribeiro/devcontainer-features/neovim": {},
     "ghcr.io/devcontainers/features/node": {},
     "ghcr.io/franco-ruggeri/devcontainer-features/tree-sitter-cli": {}
+  },
+  "customizations": {
+    "devpod": {
+      "prebuildRepository": "ghcr.io/franco-ruggeri/pdf-preview/devcontainer"
+    }
   }
 }
