@@ -94,7 +94,7 @@ will watch for changes in the output PDF document.
 You can use SSH port forwarding to view the PDF remotely:
 
 ```bash
-ssh -L 5000:localhost:5000 user@remote
+ssh -L <local-port>:localhost:<remote-port> <remote-user>@<remote-host>
 ```
 
 ### 🐳 Dev container
