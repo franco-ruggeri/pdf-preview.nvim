@@ -16,7 +16,7 @@
   },
   "customizations": {
     "devpod": {
-      "prebuildRepository": "ghcr.io/franco-ruggeri/pdf-preview/devcontainer"
+      "prebuildRepository": "ghcr.io/franco-ruggeri/pdf-preview.nvim/devcontainer"
     }
   }
 }
