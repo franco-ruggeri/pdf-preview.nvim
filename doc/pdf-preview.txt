@@ -52,7 +52,7 @@ Using lazy.nvim <https://github.com/folke/lazy.nvim>
             -- Override defaults here
         }
         config = function(_, opts)
-            require("pdf-preview").setup()
+            require("pdf-preview").setup(opts)
     
             -- Add your keymaps here
         end
