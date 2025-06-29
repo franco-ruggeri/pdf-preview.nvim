@@ -42,11 +42,12 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim) :
 
 The following user commands are created:
 
-- `:PdfPreviewStart` : Start the live preview server.
-- `:PdfPreviewStop` : Stop the preview server.
+- `:PdfPreviewStart` : Start PDF preview.
+- `:PdfPreviewStop` : Stop PDF preview.
+- `:PdfPreviewToggle` : Toggle PDF preview.
 
 After using `:PdfPreviewStart`, open the printed URL (e.g.,
-<http://localhost:5000>) in your browser.
+<http://localhost:3000>) in your browser.
 
 ## 🛠️ Configuration
 

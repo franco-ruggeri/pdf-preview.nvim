@@ -37,8 +37,6 @@ local function install_browser_sync()
 	end
 end
 
-M.running = false
-
 local function start_preview(pdf_filepath)
 	-- Create the server directory (a temporary directory to serve)
 	local server_root_path = vim.fn.tempname()
@@ -109,20 +107,18 @@ local function start_preview(pdf_filepath)
 			for _, line in ipairs(data) do
 				port = line:match("http://localhost:(%d+)")
 				if port then
+					vim.notify("PDF preview started")
 					vim.notify("Connect at http://localhost:" .. port, vim.log.levels.INFO)
 					break
 				end
 			end
 		end,
 	})
-
-	M.running = true
-	vim.notify("LaTeX preview server")
 end
 
 M.start_preview = function()
-	if M.running then
-		vim.notify("LaTeX preview is already running", vim.log.levels.INFO)
+	if server_process then
+		vim.notify("PDF preview is already running", vim.log.levels.INFO)
 		return
 	end
 
@@ -139,8 +135,8 @@ M.start_preview = function()
 end
 
 M.stop_preview = function()
-	if not M.running then
-		vim.notify("LaTeX preview is not running", vim.log.levels.INFO)
+	if not server_process then
+		vim.notify("PDF preview is not running", vim.log.levels.INFO)
 		return
 	end
 
@@ -149,8 +145,15 @@ M.stop_preview = function()
 		server_process = nil
 	end
 
-	M.running = false
-	vim.notify("LaTeX preview server stopped", vim.log.levels.INFO)
+	vim.notify("PDF preview stopped", vim.log.levels.INFO)
+end
+
+M.toggle_preview = function()
+	if server_process then
+		M.stop_preview()
+	else
+		M.start_preview()
+	end
 end
 
 M.setup = function(opts)
@@ -160,6 +163,7 @@ M.setup = function(opts)
 
 	vim.api.nvim_create_user_command("PdfPreviewStart", M.start_preview, {})
 	vim.api.nvim_create_user_command("PdfPreviewStop", M.stop_preview, {})
+	vim.api.nvim_create_user_command("PdfPreviewToggle", M.toggle_preview, {})
 end
 
 return M
