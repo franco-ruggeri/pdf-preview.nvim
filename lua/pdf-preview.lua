@@ -1,15 +1,12 @@
 local M = {}
 
-local data_path = vim.fn.stdpath("data") .. "/pdf-preview"
-
-M.opts = {
-	pdf_filepath = "main.pdf",
-	port = 5000,
+local DEFAULT_OPTS = {
+	port = nil,
 	reload_debouce = 500,
 }
 
+local data_path = vim.fn.stdpath("data") .. "/pdf-preview"
 local server_process = nil
-local server_pdf_filename = "main.pdf"
 
 local function install_browser_sync()
 	local result = nil
@@ -42,32 +39,20 @@ end
 
 M.running = false
 
-M.start_preview = function()
-	if M.running then
-		vim.notify("LaTeX preview is already running", vim.log.levels.INFO)
-		return
-	end
+local function start_preview(pdf_filepath)
+	-- Create the server directory (a temporary directory to serve)
+	local server_root_path = vim.fn.tempname()
+	vim.fn.mkdir(server_root_path, "p")
 
-	-- Create the temporary directory to serve
-	local server_path = vim.fn.tempname()
-	vim.fn.mkdir(server_path, "p")
-
-	-- Get root directory from LSP client
-	local lsp_clients = vim.lsp.get_clients()
-	if #lsp_clients == 0 then
-		error("No LSP client found.")
-	end
-	local root_dir = lsp_clients[1].root_dir
-
-	-- Symlink the PDF file to the server directory
-	local pdf_filepath = root_dir .. "/" .. M.opts.pdf_filepath
-	local server_pdf_filepath = server_path .. "/" .. server_pdf_filename
+	-- Symlink the PDF file in the server directory
+	local pdf_filename = vim.fs.basename(pdf_filepath)
+	local server_pdf_filepath = ("%s/%s"):format(server_root_path, pdf_filename)
 	if not vim.uv.fs_symlink(pdf_filepath, server_pdf_filepath, nil) then
 		error("Failed to symlink PDF file: " .. server_pdf_filepath)
 	end
 
 	-- Create HTML page wrapping the PDF
-	local html_filepath = server_path .. "/index.html"
+	local html_filepath = server_root_path .. "/index.html"
 	local html_content = string.format(
 		[[
 	<!DOCTYPE html>
@@ -85,7 +70,7 @@ M.start_preview = function()
 	</body>
 	</html>
 	]],
-		server_pdf_filename
+		pdf_filename
 	)
 	local html_file = io.open(html_filepath, "w")
 	if not html_file then
@@ -95,25 +80,31 @@ M.start_preview = function()
 	html_file:close()
 
 	-- Start browser-sync server
-	server_process = vim.fn.jobstart({
+	local command = {
 		"npx",
 		"browser-sync",
 		"start",
 		"--server",
-		server_path,
-		"--port",
-		tostring(M.opts.port),
+		server_root_path,
 		"--reload-debounce",
 		tostring(M.opts.reload_debouce),
 		"--watch",
 		"--no-ui",
 		"--no-open",
-	}, {
+	}
+	if M.opts.port then
+		table.insert(command, "--port")
+		table.insert(command, tostring(M.opts.port))
+	end
+	server_process = vim.fn.jobstart(command, {
 		cwd = data_path,
 		pty = true,
 		on_stdout = function(_, data, _)
-			-- If the configured port is already in use, browser-sync increments the port until it finds one available
-			-- To output the correct port, we need to parse the output
+			-- The port can be different from the one configured in the options in two cases:
+			-- * If the port is nil, browser-sync will choose a random available port.
+			-- * If the configured port is already in use, browser-sync will increment the port until it finds one available.
+			--
+			-- So, to output the correct port, we need to parse the output.
 			local port = nil
 			for _, line in ipairs(data) do
 				port = line:match("http://localhost:(%d+)")
@@ -127,6 +118,24 @@ M.start_preview = function()
 
 	M.running = true
 	vim.notify("LaTeX preview server")
+end
+
+M.start_preview = function()
+	if M.running then
+		vim.notify("LaTeX preview is already running", vim.log.levels.INFO)
+		return
+	end
+
+	local cwd = vim.fn.getcwd()
+	vim.ui.input({
+		prompt = ("Enter the PDF filepath: %s/"):format(cwd),
+		completion = "file",
+	}, function(input)
+		if input then
+			local pdf_filepath = cwd .. "/" .. input
+			start_preview(pdf_filepath)
+		end
+	end)
 end
 
 M.stop_preview = function()
@@ -145,7 +154,7 @@ M.stop_preview = function()
 end
 
 M.setup = function(opts)
-	M.opts = vim.tbl_deep_extend("force", M.opts, opts or {})
+	M.opts = vim.tbl_deep_extend("force", DEFAULT_OPTS, opts or {})
 
 	install_browser_sync()
 

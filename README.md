@@ -54,12 +54,9 @@ The default configuration is as follows:
 
 ```lua
 {
-    -- PDF filepath relative to the project root directory
-    pdf_filepath = "main.pdf",
-    -- Port where the browser-sync server listen on. 
-    -- If already in use, the port will be incremented until an available port 
-    -- is found.
-    port = 5000,
+    -- Port where the browser-sync server will try to listen on. 
+    -- If nil, the default browser-sync behavior will be followed.
+    port = nil,
     -- Debounce delay for refresh events in milliseconds
     reload_debouce = 500,
 }
