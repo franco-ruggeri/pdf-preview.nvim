@@ -6,7 +6,7 @@ A Neovim plugin for easily previewing PDF documents in your browser, with
 automatic reloading on file changes. This plugin is ideal for a minimalist LaTeX
 editing workflow, even on a remote server or in a dev container.
 
-![demo](./assets/demo.gif)
+![demo](https://github.com/user-attachments/assets/76bd5ff4-aade-4484-85fc-380f40c8cdf0)
 
 ## ✨ Features
 
